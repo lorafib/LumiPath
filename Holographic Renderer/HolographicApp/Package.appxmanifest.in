@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity Name="CAMP.@PROJECT_NAME@"
+            Publisher="CN=CAMP, O=CAMP, L=Baltimore, S=Maryland, C=US"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="@PACKAGE_GUID@" PhonePublisherId="@PUBLISHER_ID@"/>
+
+  <Properties>
+    <DisplayName>@PROJECT_NAME@</DisplayName>
+    <PublisherDisplayName>CAMP@JHU</PublisherDisplayName>
+    <Logo>assets\CAMPStoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Holographic" MinVersion="@MIN_VERSION@" MaxVersionTested="@MAX_VERSION@" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+        Executable="$targetnametoken$.exe"
+        EntryPoint="@PROJECT_NAME@.App">
+        <uap:VisualElements
+             DisplayName="@PROJECT_NAME@"
+             Square150x150Logo="assets\CAMPSquare150x150Logo.png" 
+             Square44x44Logo="assets\CAMPSquare44x44Logo.png" 
+             Description="@PROJECT_NAME@"
+             BackgroundColor="#464646">
+          <uap:DefaultTile Wide310x150Logo="assets\CAMPWide310x150Logo.png" />
+          <uap:SplashScreen Image="assets\CAMPSplashScreen.png" />
+        </uap:VisualElements>
+      </Application>
+  </Applications>
+
+  <Capabilities>
+  </Capabilities>
+  
+</Package>
