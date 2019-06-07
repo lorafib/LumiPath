@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+project("SphereicalDemo")
+
+# CXX Standard
+set(CMAKE_CXX_STANDARD 17)
+add_definitions("-DDATA_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/Data/\"")
+add_definitions("-DDICOM_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/DICOM_CT/\"")
+
+# Add Subdirectory
+if(MSVC_VERSION GREATER 1800 AND "${CMAKE_SYSTEM_NAME}" STREQUAL "WindowsStore")
+  add_subdirectory(UWPApp)
+  add_subdirectory(HolographicApp)
+  set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT UWPApp)
+else()
+  set(GCC_EXPECTED_VERSION 8.1.0)
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS GCC_EXPECTED_VERSION)
+    message(FATAL_ERROR "GCC: Build requires version ${GCC_EXPECTED_VERSION} but find ${CMAKE_CXX_COMPILER_VERSION}")
+  endif()
+  add_subdirectory(Sphere)
+  add_subdirectory(DesktopGLApp)
+  if(WIN32)
+    add_subdirectory(DesktopDirectXApp)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT DesktopDirectXApp)
+  endif()
+endif()
