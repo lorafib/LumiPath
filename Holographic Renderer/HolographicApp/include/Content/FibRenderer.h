@@ -48,9 +48,11 @@ namespace HolographicApp
 
         // Variables used with the rendering loop.
         bool                                            m_loadingComplete = false;
-        float                                           m_degreesPerSecond = 5.f;
+	public:
+        float                                           m_degreesPerSecond = 0.f;
+		float											m_radius = 0.375;
+	private:
         Windows::Foundation::Numerics::float3           m_position = { 0.f, 0.f, 0.f };
-		float											m_radius = 0.33;
         // If the current D3D Device supports VPRT, we can avoid usi5ng a geometry
         // shader just to set the render target array index.s
         bool                                            m_usingVprtShaders = false;

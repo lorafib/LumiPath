@@ -43,6 +43,8 @@ namespace HolographicApp
 
         // Handle mouse input.
         void OnPointerPressed();
+		// Handle Keyboard input
+		void OnKeyPressed(Windows::System::VirtualKey key);
 
     private:
         // Recognize gamepads that are plugged in after the app starts.

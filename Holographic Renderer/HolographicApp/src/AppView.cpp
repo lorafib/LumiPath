@@ -12,6 +12,7 @@ using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Foundation;
 using namespace Windows::Graphics::Holographic;
 using namespace Windows::UI::Core;
+using namespace Windows::System::Inventory;
 
 // The main function is only used to initialize our IFrameworkView class.
 // Under most circumstances, you should not need to modify this function.
@@ -204,6 +205,9 @@ void AppView::OnKeyPressed(CoreWindow^ sender, KeyEventArgs^ args)
     // TODO: Bluetooth keyboards are supported by HoloLens. You can use this method for
     //       keyboard input if you want to support it as an optional input method for
     //       your holographic app.
+	if (m_main != nullptr) {
+		m_main->OnKeyPressed(args->VirtualKey);
+	}
     //
 }
 void AppView::OnPointerPressed(CoreWindow^ sender, PointerEventArgs^ args)

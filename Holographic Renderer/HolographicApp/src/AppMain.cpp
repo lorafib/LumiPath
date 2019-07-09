@@ -204,6 +204,7 @@ HolographicFrame^ AppMain::Update()
     m_pointerPressed = false;
     m_fibRenderer->PositionHologram(pose);
 
+
     m_timer.Tick([&] ()
     {
         //
@@ -370,6 +371,21 @@ void AppMain::OnDeviceRestored()
 void AppMain::OnPointerPressed()
 {
     m_pointerPressed = true;
+}
+
+void AppMain::OnKeyPressed(Windows::System::VirtualKey key) {
+	
+	if (key == Windows::System::VirtualKey::Left)
+		m_fibRenderer->m_degreesPerSecond -= 1.0f;
+	if (key == Windows::System::VirtualKey::Right)
+		m_fibRenderer->m_degreesPerSecond += 1.0f;
+	if (key == Windows::System::VirtualKey::Down)
+		m_fibRenderer->m_radius -= 0.005f;
+	if (key == Windows::System::VirtualKey::Up)
+		m_fibRenderer->m_radius += 0.005f;
+
+	String^ message = L"KEY: " + key.ToString() + L"\n";
+	OutputDebugStringW(message->Data());
 }
 
 void AppMain::OnLocatabilityChanged(SpatialLocator^ sender, Object^ args)

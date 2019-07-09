@@ -189,14 +189,6 @@ float4 smoothSF_second_2x2(in float3 p, in unsigned int numFibPointsN, unsigned 
 		c.x = round(c.x); //TODO check
 		c.y = round(c.y); //TODO check
 
-						  //TODO also try this but adapt filtersize!!!!
-						  /*const unsigned int NUM_CORNERS = 4;
-						  float2 corners[NUM_CORNERS];
-						  corners[0] = c;
-						  corners[1] = c + make_float2(0.f, 1.f);
-						  corners[2] = c + make_float2(1.f, 1.f);
-						  corners[3] = c + make_float2(1.f, 0.f);*/
-
 		const unsigned int NUM_CORNERS = 5;
 		float2 corners[NUM_CORNERS];
 		corners[0] = c;

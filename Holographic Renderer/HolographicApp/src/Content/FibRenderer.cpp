@@ -32,7 +32,7 @@ void FibRenderer::PositionHologram(SpatialPointerPose^ pointerPose)
         const float3 headDirection   = pointerPose->Head->ForwardDirection;
 
         // The hologram is positioned two meters along the user's gaze direction.
-        constexpr float distanceFromUser    = 2.0f; // meters
+        constexpr float distanceFromUser    = 0.75f; // meters
         const float3 gazeAtTwoMeters        = headPosition + (distanceFromUser * headDirection);
 
         // This will be used as the translation component of the hologram's
@@ -48,7 +48,7 @@ void FibRenderer::Update(const DX::StepTimer& timer)
     // Rotate the cube.
     // Convert degrees to radians, then convert seconds to rotation angle.
     const float    radiansPerSecond = XMConvertToRadians(m_degreesPerSecond);
-    const double   totalRotation    = timer.GetTotalSeconds() * radiansPerSecond;
+    const double   totalRotation    = /*timer.GetTotalSeconds() **/ radiansPerSecond;
     const float    radians          = static_cast<float>(fmod(totalRotation, XM_2PI));
 	const XMMATRIX modelRotation = XMMatrixRotationY(-radians);// XMMatrixMultiply(XMMatrixRotationX(XMConvertToRadians(M_PI)), XMMatrixRotationY(-radians));
 	const XMMATRIX modelScale = XMMatrixScaling(m_radius, m_radius, m_radius);
